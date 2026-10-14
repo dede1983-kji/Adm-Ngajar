@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrasi Mengajar Ku</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Halaman Login */
+        .login-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
+        }
+
+        /* Styling Logo TKJ */
+        .login-logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .login-card h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 20px;
+        }
+
+        .login-card input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .login-card button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .login-card button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-msg {
+            color: red;
+            margin-top: 10px;
+            font-size: 14px;
+            display: none;
+        }
+
+        /* Halaman Dashboard */
+        .dashboard-container {
+            display: none;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .dashboard-logo {
+            width: 45px;
+            height: auto;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            color: #333;
+        }
+
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .card .icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HALAMAN LOGIN -->
+    <div class="login-card" id="loginPage">
+        <!-- Logo TKJ -->
+        <img src="logo-tkj.png" alt="Logo TKJ" class="login-logo">
+        <h2>Administrasi Mengajar Ku</h2>
+        <input type="password" id="passwordInput" placeholder="Masukkan Password">
+        <button onclick="checkPassword()">Masuk</button>
+        <p class="error-msg" id="errorMsg">Password salah!</p>
+    </div>
+
+    <!-- HALAMAN DASHBOARD -->
+    <div class="dashboard-container" id="dashboardPage">
+        <div class="header">
+            <div class="header-title">
+                <img src="logo-tkj.png" alt="Logo TKJ" class="dashboard-logo">
+                <h1>Portal Administrasi Guru TKJ</h1>
+            </div>
+            <button class="logout-btn" onclick="logout()">Keluar</button>
+        </div>
+
+        <div class="grid-container">
+            <!-- Salin link Google Drive Anda di bagian href -->
+            <a href="https://drive.google.com/file/d/12hu2lkCbmwyWusoMKHrn5oeP7jTTSpVV/view?usp=sharing" target="_blank" class="card">
+                <div class="icon">📁</div>
+                <h3>Kalender Pendidikan 2026/2027</h3>
+            </a>
+
+            <a href="https://drive.google.com/file/d/1C-xIf27NOAsBx_ro5w8v7CWWsTu8vcDZ/view?usp=sharing" target="_blank" class="card">
+                <div class="icon">📊</div>
+                <h3>Minggu Efektif 2026/2027</h3>
+            </a>
+
+            <a href="https://drive.google.com/file/d/166UdCzjIpRrT7d5gAOyGgCn6bLYtAPhN/view?usp=sharing" target="_blank" class="card">
+                <div class="icon">📝</div>
+                <h3>Jadwal Pelajaran</h3>
+            </a>
+
+            <a href="https://drive.google.com/file/d/166UdCzjIpRrT7d5gAOyGgCn6bLYtAPhN/view?usp=sharing" target="_blank" class="card">
+                <div class="icon">📈</div>
+                <h3>Alur Tujuan Pembelajaran KK_ASJ</h3>
+            </a>
+
+            <a href="https://drive.google.com/file/d/19zDl47VhA8eABy2pOFcL1py_LSVeLTvV/view?usp=sharing" target="_blank" class="card">
+                <div class="icon">📅</div>
+                <h3>Format TP dan ATP 2026/2027</h3>
+            </a>
+
+            <a href="https://drive.google.com/file/d/1-cCo0KAGxdtgj3QWjA3vUKaYpJYcW6T7/view?usp=sharing" target="_blank" class="card">
+                <div class="icon">📚</div>
+                <h3>PROTA</h3>
+            </a>
+ 		<a href="https://drive.google.com/file/d/1Aio_hxEGhNAqU2KsAjiSvfxfLV9H6YvV/view?usp=sharing" target="_blank" class="card">
+                <div class="icon">📚</div>
+                <h3>PROSEM</h3>
+            </a>
+            <a href="https://drive.google.com/file/d/1T-w-h4sqdbSm_EgvZMVAU_JNkj5f9hUX/view?usp=sharing" target="_blank" class="card">
+                <div class="icon">📅</div>
+                <h3>Modul Ajar</h3>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1OEHIiY7QiPi5Yb6sAW73YYaF0S0zFnTz?usp=sharing" target="_blank" class="card">
+                <div class="icon">📈</div>
+                <h3>Bahan Ajar</h3>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1oqjI0bmf2mND-B7TI-4cJe6oMB-qT3Ig?usp=sharing" target="_blank" class="card">
+                <div class="icon">📈</div>
+                <h3>Job Sheet</h3>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const PASSWORD_BENAR = "bismillah";
+
+        function checkPassword() {
+            const input = document.getElementById("passwordInput").value;
+            const errorMsg = document.getElementById("errorMsg");
+
+            if (input === PASSWORD_BENAR) {
+                document.getElementById("loginPage").style.display = "none";
+                document.getElementById("dashboardPage").style.display = "block";
+            } else {
+                errorMsg.style.display = "block";
+            }
+        }
+
+        function logout() {
+            document.getElementById("passwordInput").value = "";
+            document.getElementById("errorMsg").style.display = "none";
+            document.getElementById("loginPage").style.display = "block";
+            document.getElementById("dashboardPage").style.display = "none";
+        }
+    </script>
+</body>
+</html>
